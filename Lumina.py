@@ -7,7 +7,6 @@ import os
 
 root = Tk()
 root.title('Lumina 1.0')
-# root.iconphoto(True, PhotoImage(file="C:/Users/Ricardo Salas/Desktop/New folder/Moduulight/dll/moduuliicon.ico"))
 
 d = os.getcwd()
 d1 = os.path.join(d, "gray_light_icon.ico")
@@ -16,7 +15,7 @@ root.iconbitmap(d1)
 
 # Main Variables
 
-    # Lux Requirement List
+# Lux Requirement List
 luxes = []
 for i in range(50, 1050, 50):
     luxes.append(i)
@@ -25,12 +24,10 @@ for i in range(1500, 4500, 500):
     luxes.append(i)
 
 
-    # Fixtures' Lumen Specification List
-
+# Fixtures' Lumen Specification List
 lumens = [i for i in range(200, 8200, 200)]
 
-    # Architectural elements' colors
-
+# Architectural elements' colors
 ceilingIndexes = {
     'White or very light': 0.7,
     'Light': 0.5,
@@ -43,12 +40,10 @@ wallsIndexes = {
     'Dark': 0.1
 }
 
-    # K Collection
-
+# K Collection
 KCollection = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]
 
 # Frames
-
 mainFrame1 = LabelFrame(root, width = 560, height = 160, padx=5, pady=5)
 mainFrame1.grid(column=0, row=2, padx=10, pady=10, columnspan=3, sticky=W)
 mainFrame1.grid_propagate(0)
@@ -57,8 +52,7 @@ mainFrame2 = LabelFrame(root, width = 560, height = 160, padx=5, pady=5)
 mainFrame2.grid(column=0, row=2, padx=10, pady=10, columnspan=3, sticky=W)
 mainFrame2.grid_propagate(0)
 
-    # Dimensions Frames
-
+# Dimensions Frames
 roomDFrame = LabelFrame(mainFrame1, text='Room Information', width = 200, height = 120, padx=5, pady=5)
 roomDFrame.grid(column=0, row=0, padx=10, pady=10, columnspan=2, sticky=W)
 roomDFrame.grid_propagate(0)
@@ -67,8 +61,7 @@ roomAFrame = LabelFrame(mainFrame2, text='Room Information', width = 200, height
 roomAFrame.grid(column=0, row=0, padx=10, pady=10, columnspan=2, sticky=W)
 roomAFrame.grid_propagate(0)
 
-    #Lighting and material properties Frames
-
+#Lighting and material properties Frames
 lmDFrame = LabelFrame(mainFrame1, text='Lighting and Material Properties', width = 300, height = 120, padx=5, pady=5)
 lmDFrame.grid(column=2, row=0, padx=10, pady=10, columnspan=2, sticky=W)
 lmDFrame.grid_propagate(0)
@@ -77,13 +70,11 @@ lmAFrame = LabelFrame(mainFrame2, text='Lighting and Material Properties', width
 lmAFrame.grid(column=2, row=0, padx=10, pady=10, columnspan=2, sticky=W)
 lmAFrame.grid_propagate(0)
 
-    # Calculate Frame
-
+# Calculate Frame
 finalFrame = LabelFrame(root)
 finalFrame.grid(column=0, row=3, columnspan=3, sticky=W+E, padx=10, pady=5)
 
-        # Number of fixtures Frame
-
+# Number of fixtures Frame
 fixturesNmbFrame = LabelFrame(finalFrame, text='Amount of fixtures needed')
 fixturesNmbFrame.grid(column=1, row=0)
 
@@ -97,8 +88,6 @@ def calc():
 
     def fixturesH():
     
-    
-
         if roomHeight <= 2.4:
             fixturesHeight = 2.4
         elif roomHeight > 2.4:
@@ -165,7 +154,7 @@ calcBtn = Button(finalFrame, text='Calculate', font=('helvetica', '14'), command
 
 # Base inputs
 
-    # Rectangular Inputs
+# Rectangular Inputs
 
 Da = Entry(roomDFrame, borderwidth=2)
 Da.grid(column=1, row=0, padx=5, pady=5)
@@ -179,7 +168,7 @@ Dh = Entry(roomDFrame, borderwidth=2)
 Dh.grid(column=1, row=2, padx=5, pady=5)
 DhTex = Label(roomDFrame, text='Height').grid(column=0, row=2, padx=5, pady=5, sticky=W)
 
-        # Lumen Specification Selection
+# Lumen Specification Selection
 
 lumenDMenuTex = Label(lmDFrame, text="Fixtures' Luminous Flux").grid(column=0, row=0, sticky=W)
 choosedDLumen = IntVar()
@@ -188,9 +177,9 @@ lumenDMenu = ttk.Combobox(lmDFrame, textvar=choosedDLumen)
 lumenDMenu.grid(column=1, row=0, padx=5, pady=5, sticky=E)
 lumenDMenu['values'] = lumens
 
-        # Material Reflection Selection
+# Material Reflection Selection
 
-            #Ceiling Reflection Selection
+# Ceiling Reflection Selection
 
 ceilingDMenuTex = Label(lmDFrame, text="Ceiling Color").grid(column=0, row=1, sticky=W)
 choosedDCeiling = StringVar()
@@ -230,23 +219,21 @@ lumenAMenu = ttk.Combobox(lmAFrame, textvar=choosedALumen)
 lumenAMenu.grid(column=1, row=0, padx=5, pady=5, sticky=E)
 lumenAMenu['values'] = lumens
 
-        # Material Reflection Selection
+# Material Reflection Selection
 
-            #Ceiling Reflection Selection
+# Ceiling Reflection Selection
 
 ceilingAMenuTex = Label(lmAFrame, text="Ceiling Color").grid(column=0, row=1, sticky=W)
 choosedACeiling = StringVar()
-# choosedDCeiling.set(str(ceilingIndexes)[0])
 ceilingAMenu = ttk.Combobox(lmAFrame, textvar=choosedACeiling)
 ceilingAMenu.grid(column=1, row=1, padx=5, pady=5, sticky=E)
 ceilingAMenu['values'] = list(ceilingIndexes.keys())
 ceilingAMenu.current(0)
 
-            # Wall Reflection Selection
+# Wall Reflection Selection
 
 wallsAMenuTex = Label(lmAFrame, text="Walls Color").grid(column=0, row=2, sticky=W)
 choosedAwalls = StringVar()
-# choosedDwalls.set(str(wallsIndexes)[0])
 wallsAMenu = ttk.Combobox(lmAFrame, textvar=choosedAwalls)
 wallsAMenu.grid(column=1, row=2, padx=5, pady=5, sticky=E)
 wallsAMenu['values'] = list(wallsIndexes.keys())
@@ -255,7 +242,6 @@ wallsAMenu.current(0)
 # Choose between regular and irregular shaped floorplan
 
 choosed = StringVar()
-# choosed.set('Rectangular')
 dropShapeText = Label(root, text="Floorplan's Shape").grid(column=0, row=0, padx=10, sticky=W)
 dropShape = ttk.Combobox(root, textvar=choosed)
 dropShape.grid(column=1, row=0, sticky=W+E, padx=10, pady=5)
@@ -264,7 +250,6 @@ dropShape.current(0)
 
 
 # Specify Lux requirement
-
 luxReqTex = Label(root, text='Illuminance Requirement (Lux)', padx=10).grid(column=0, row=1, sticky=W)
 lux = IntVar()
 luxMenu = ttk.Combobox(root, textvar=lux)
@@ -317,13 +302,10 @@ def clearEntries(*args):
 
     fixtures = Label(fixturesNmbFrame, text=20*' ')
     fixtures.grid(column=0, row=0)
-    
-
 
 choosed.trace('w', frameRaise)
 choosed.trace('w', clearEntries)
 choosed.trace('w', blankOutput)
-
 
 # Lists for ceiling reflection of 0.7
 
